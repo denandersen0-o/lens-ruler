@@ -1,0 +1,177 @@
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--stage);
+  height: var(--stage);
+  transform: translate(-50%, -50%);
+  font-family: "Geist", sans-serif;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.themeToggle {
+  position: fixed;
+  z-index: 20;
+  top: max(14px, env(safe-area-inset-top));
+  right: max(14px, env(safe-area-inset-right));
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid var(--toggle-border);
+  border-radius: 50%;
+  background: var(--toggle-bg);
+  color: var(--toggle-ink);
+  box-shadow: 0 4px 16px rgba(20, 24, 35, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.themeToggle svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.7;
+}
+
+.themeToggle:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: 3px;
+}
+
+/* Everything that moves: placed at (0, 0) and moved by transform each frame */
+.abs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform, opacity, filter;
+}
+
+.odo {
+  position: absolute;
+  left: var(--odo-x);
+  top: var(--odo-y);
+  width: var(--odo-w);
+  height: var(--odo-h);
+  overflow: hidden;
+  mask-image: var(--odo-mask);
+  font-family: "Doto", sans-serif;
+  font-variation-settings: "ROND" 100;
+}
+
+.col {
+  width: var(--odo-col);
+  text-align: center;
+  font-size: var(--odo-font-size);
+  font-weight: 600;
+  line-height: var(--odo-h);
+  letter-spacing: var(--odo-track);
+}
+
+.col > div {
+  height: var(--odo-h);
+}
+
+.fraction {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--odo-frac-w);
+  height: var(--odo-h);
+  text-align: center;
+  font-size: var(--odo-font-size);
+  font-weight: 600;
+  line-height: var(--odo-h);
+  letter-spacing: -16px;
+}
+
+.fraction > div {
+  height: var(--odo-h);
+}
+
+.degree {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--odo-degree-w);
+  height: var(--odo-h);
+  text-align: center;
+  font-size: var(--odo-font-size);
+  font-weight: 600;
+  line-height: var(--odo-h);
+}
+
+.ruler {
+  position: absolute;
+  left: 0;
+  top: var(--ruler-y);
+  width: var(--stage);
+  height: var(--ruler-h);
+  mask-image: var(--ruler-mask);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+}
+
+.held .ruler {
+  cursor: grabbing;
+}
+
+.ticks {
+  position: absolute;
+  left: 0;
+  top: var(--ticks-y);
+  width: var(--stage);
+  height: var(--ticks-h);
+}
+
+.lens {
+  left: 0;
+  top: 0;
+  width: var(--lens-w);
+  height: var(--lens-h);
+  border-radius: var(--lens-r);
+  z-index: 1;
+  background: var(--lens-bg);
+  box-shadow: var(--lens-shadow);
+}
+
+/* Keyboard focus: a ring around the lens (the ruler's own box is masked at its ends) */
+.ruler:focus-visible .lens {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-gap);
+}
+
+/* The numbers move like .abs but without will-change: Chrome keeps a will-change layer's first raster scale, so the
+   number under the lens (scaled up to 2.15×) could show as a soft, upscaled bitmap; repainted, it's always crisp. */
+.n {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--num-w);
+  height: var(--num-h);
+  line-height: var(--num-h);
+  text-align: center;
+  font-size: var(--num-size);
+  font-variant-numeric: tabular-nums;
+  transform-origin: 50% 50%;
+  z-index: 0;
+}
+
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9;
+  pointer-events: none;
+  filter: var(--cursor-shadow);
+  transform-origin: 2px 2px;
+}

@@ -1,0 +1,59 @@
+/* The design's values. The stage is a 1080 × 1080 artboard in px, centred and scaled to the window by
+   src/lib/optics.ts (fitScale). What moves every frame (the fisheye, the lens's stretch, the ticks, the counter's
+   roll, every timing) is in src/lib/ (optics.ts, timeline.ts, scene.ts, motion.ts). */
+:root {
+  /* Page and ink */
+  --page: linear-gradient(135deg, #96c8ff 0%, #f8eedD 100%);
+  --ink: #111113;
+  --toggle-bg: rgba(255, 255, 255, 0.62);
+  --toggle-border: rgba(255, 255, 255, 0.72);
+  --toggle-ink: #24252a;
+
+  /* Stage */
+  --stage: 1080px;
+
+  /* The counter: free-standing and centered on the stage, with a full-size half-degree and degree symbol */
+  --odo-x: 258px;
+  --odo-y: 296px;
+  --odo-w: 600px;
+  --odo-h: 204px;
+  --odo-col: 100px;
+  --odo-frac-w: 180px;
+  --odo-degree-w: 92px;
+  --odo-font-size: 160px;
+  --odo-track: -6px;
+  --odo-mask: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+
+  /* The ruler: a 1080 × 200 strip at y 700, fading out at both ends; ticks in a 1080 × 60 canvas at y 118 */
+  --ruler-y: 700px;
+  --ruler-h: 200px;
+  --ruler-mask: linear-gradient(90deg, transparent 6%, #000 30%, #000 70%, transparent 94%);
+  --ticks-y: 118px;
+  --ticks-h: 60px;
+
+  /* Numbers: 80 × 96 cells, Geist Medium 24, tabular figures */
+  --num-w: 80px;
+  --num-h: 96px;
+  --num-size: 24px;
+
+  /* The lens: 160 × 96 at rest (it widens with speed), glossy black */
+  --lens-w: 160px;
+  --lens-h: 96px;
+  --lens-r: 48px;
+  --lens-bg: linear-gradient(180deg, #2c2c31, #0a0a0c 60%);
+  --lens-shadow: 0 18px 30px rgba(10, 10, 20, 0.28), 0 2px 6px rgba(10, 10, 20, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -8px 16px rgba(255, 255, 255, 0.04);
+  --focus-ring: 2px solid rgba(17, 17, 19, 0.45);
+  --focus-gap: 6px;
+
+  /* The demo's cursor: a 26 px arrow (sized on the SVG) with a soft shadow */
+  --cursor-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+:root[data-theme="dark"] {
+  --ink: #f4f3f2;
+  --toggle-bg: rgba(19, 22, 30, 0.72);
+  --toggle-border: rgba(255, 255, 255, 0.16);
+  --toggle-ink: #f4f3f2;
+  --focus-ring: 2px solid rgba(255, 255, 255, 0.76);
+}
