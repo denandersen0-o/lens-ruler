@@ -1,22 +1,24 @@
 # Lens Ruler
 
-Мобильный веб-прототип интерактивного температурного регулятора.
+Mobile temperature-control prototype built around an interactive lens-style ruler.
 
-## Как пользоваться
+[Component](src/components/LensRuler.tsx)
 
-- Перетаскивайте шкалу, чтобы менять температуру.
-- Быстро проведите по шкале, чтобы проверить инерционную прокрутку.
-- Нажмите на деление шкалы, чтобы выбрать значение.
-- Температура меняется от 16.0 °C до 32.0 °C с шагом 0.5 °C.
+## How to use
 
-## Локальный запуск
+- Drag the ruler to change the temperature.
+- Flick it to test inertial scrolling.
+- Tap a tick to select a value.
+- The range is 16.0 °C to 32.0 °C in 0.5 °C steps.
+
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Для проверки production-сборки:
+To build and check the production version:
 
 ```bash
 npm run build
