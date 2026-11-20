@@ -2,7 +2,7 @@
 
 Mobile temperature-control prototype built around an interactive lens-style ruler.
 
-[Component](src/components/LensRuler.tsx)
+[Demo](https://denandersen0-o.github.io/lens-ruler/) · [Component](src/components/LensRuler.tsx)
 
 ## How to use
 
